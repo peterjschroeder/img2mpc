@@ -85,16 +85,6 @@ def img2mpcMtgNLF(image, output, dir, type, bcolor):
 
     return image
 
-def img2mpcFFTCG(image, output, dir, bcolor):
-
-    # Resize
-    image = image.resize((786,1080), Image.ANTIALIAS)
-
-    # Add bleed area
-    image = ImageOps.expand(image,border=36,fill=bcolor)
-
-    return image
-
 def img2mpcDigimon(image, output, dir, bcolor):
 
     # Resize
@@ -251,13 +241,35 @@ def img2mpcDigimon(image, output, dir, bcolor):
 
     return image
 
+def img2mpcFFTCG(image, output, dir, bcolor):
+
+    # Resize
+    image = image.resize((747,1044), Image.ANTIALIAS)
+
+    # Add bleed area
+    image = ImageOps.expand(image,border=36,fill=bcolor)
+
+    return image
+
+def img2mpcRage(image, output, dir, bcolor):
+
+    # Resize
+    image = image.resize((747,1044), Image.ANTIALIAS)
+
+    # Add bleed area
+    image = ImageOps.expand(image,border=36,fill=bcolor)
+
+    return image
+
 def img2mpc(input, output, dir, game, frame, type, bcolor):
     image = Image.open(input)
 
-    if 'fftcg' in game:
-        image = img2mpcFFTCG(image, output, dir, bcolor)
-    elif 'digimon' in game:
+    if 'digimon' in game:
         image = img2mpcDigimon(image, output, dir, bcolor)
+    elif 'fftcg' in game or 'rage' in game:
+        image = img2mpcFFTCG(image, output, dir, bcolor)
+    elif 'rage' in game:
+        image = img2mpcRage(image, output, dir, bcolor)
     else:
         # Adjust brightness
         image = ImageEnhance.Brightness(image).enhance(1.07)

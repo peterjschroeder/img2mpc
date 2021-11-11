@@ -85,164 +85,20 @@ def img2mpcMtgNLF(image, output, dir, type, bcolor):
 
     return image
 
-def img2mpcDigimon(image, output, dir, bcolor):
-
+def img2mpcDigimon(image, output, dir):
     # Resize
-    image = image.resize((786,1080), Image.ANTIALIAS)
+    image = image.resize((1488,2026), Image.ANTIALIAS)
 
     # Blur the copyright info
     mask = Image.new('L', image.size, 0)
     draw = ImageDraw.Draw(mask)
-    draw.rectangle([(751,37),(767,952)], fill=255)
-    blurred = image.filter(ImageFilter.BoxBlur(3))
+    draw.rectangle([(1457,67),(1407,1959)], fill=255)
+    blurred = image.filter(ImageFilter.BoxBlur(5))
     image.paste(blurred, mask=mask)
-
-    # Add bleed area
-    image = ImageOps.expand(image,border=36,fill=bcolor)
-
-    draw = ImageDraw.Draw(image)
-
-    # Round off the corners
-    draw.line((36, 36, 69, 36), fill=bcolor)
-    draw.line((36, 37, 69, 37), fill=bcolor)
-    draw.line((36, 38, 61, 38), fill=bcolor)
-    draw.line((36, 39, 60, 39), fill=bcolor)
-    draw.line((36, 40, 58, 40), fill=bcolor)
-    draw.line((36, 41, 56, 41), fill=bcolor)
-    draw.line((36, 42, 54, 42), fill=bcolor)
-    draw.line((36, 43, 52, 43), fill=bcolor)
-    draw.line((36, 44, 50, 44), fill=bcolor)
-    draw.line((36, 45, 49, 45), fill=bcolor)
-    draw.line((36, 46, 48, 46), fill=bcolor)
-    draw.line((36, 47, 47, 47), fill=bcolor)
-    draw.line((36, 48, 46, 48), fill=bcolor)
-    draw.line((36, 49, 45, 49), fill=bcolor)
-    draw.line((36, 50, 44, 50), fill=bcolor)
-    draw.line((36, 51, 43, 51), fill=bcolor)
-    draw.line((36, 52, 43, 52), fill=bcolor)
-    draw.line((36, 53, 42, 53), fill=bcolor)
-    draw.line((36, 54, 42, 54), fill=bcolor)
-    draw.line((36, 55, 41, 55), fill=bcolor)
-    draw.line((36, 56, 41, 56), fill=bcolor)
-    draw.line((36, 57, 40, 57), fill=bcolor)
-    draw.line((36, 58, 39, 58), fill=bcolor)
-    draw.line((36, 59, 39, 59), fill=bcolor)
-    draw.line((36, 60, 39, 60), fill=bcolor)
-    draw.line((36, 61, 38, 61), fill=bcolor)
-    draw.line((36, 62, 38, 62), fill=bcolor)
-    draw.line((36, 63, 37, 63), fill=bcolor)
-    draw.line((36, 64, 37, 64), fill=bcolor)
-    draw.line((36, 65, 37, 65), fill=bcolor)
-    draw.line((36, 66, 37, 66), fill=bcolor)
-    draw.line((36, 67, 37, 67), fill=bcolor)
-    draw.line((36, 68, 37, 68), fill=bcolor)
-    
-    draw.line((788, 36, 821, 36), fill=bcolor)
-    draw.line((788, 37, 821, 37), fill=bcolor)
-    draw.line((796, 38, 821, 38), fill=bcolor)
-    draw.line((797, 39, 821, 39), fill=bcolor)
-    draw.line((799, 40, 821, 40), fill=bcolor)
-    draw.line((801, 41, 821, 41), fill=bcolor)
-    draw.line((803, 42, 821, 42), fill=bcolor)
-    draw.line((805, 43, 821, 43), fill=bcolor)
-    draw.line((807, 44, 821, 44), fill=bcolor)
-    draw.line((808, 45, 821, 45), fill=bcolor)
-    draw.line((809, 46, 821, 46), fill=bcolor)
-    draw.line((810, 47, 821, 47), fill=bcolor)
-    draw.line((811, 48, 821, 48), fill=bcolor)
-    draw.line((811, 49, 821, 49), fill=bcolor)
-    draw.line((812, 50, 821, 50), fill=bcolor)
-    draw.line((813, 51, 821, 51), fill=bcolor)
-    draw.line((814, 52, 821, 52), fill=bcolor)
-    draw.line((815, 53, 821, 53), fill=bcolor)
-    draw.line((815, 54, 821, 54), fill=bcolor)
-    draw.line((816, 55, 821, 55), fill=bcolor)
-    draw.line((816, 56, 821, 56), fill=bcolor)
-    draw.line((817, 57, 821, 57), fill=bcolor)
-    draw.line((818, 58, 821, 58), fill=bcolor)
-    draw.line((818, 59, 821, 59), fill=bcolor)
-    draw.line((818, 60, 821, 60), fill=bcolor)
-    draw.line((819, 61, 821, 61), fill=bcolor)
-    draw.line((819, 62, 821, 62), fill=bcolor)
-    draw.line((820, 63, 821, 63), fill=bcolor)
-    draw.line((820, 64, 821, 64), fill=bcolor)
-    draw.line((820, 65, 821, 65), fill=bcolor)
-    draw.line((820, 66, 821, 66), fill=bcolor)
-    draw.line((820, 67, 821, 67), fill=bcolor)
-    draw.line((820, 68, 821, 68), fill=bcolor)
-
-    draw.line((36, 1083, 37, 1083), fill=bcolor)
-    draw.line((36, 1084, 37, 1084), fill=bcolor)
-    draw.line((36, 1085, 37, 1085), fill=bcolor)
-    draw.line((36, 1086, 37, 1086), fill=bcolor)
-    draw.line((36, 1087, 37, 1087), fill=bcolor)
-    draw.line((36, 1088, 37, 1088), fill=bcolor)
-    draw.line((36, 1089, 38, 1089), fill=bcolor)
-    draw.line((36, 1090, 38, 1090), fill=bcolor)
-    draw.line((36, 1091, 39, 1091), fill=bcolor)
-    draw.line((36, 1092, 39, 1092), fill=bcolor)
-    draw.line((36, 1093, 39, 1093), fill=bcolor)
-    draw.line((36, 1094, 40, 1094), fill=bcolor)
-    draw.line((36, 1095, 41, 1095), fill=bcolor)
-    draw.line((36, 1096, 41, 1096), fill=bcolor)
-    draw.line((36, 1097, 42, 1097), fill=bcolor)
-    draw.line((36, 1098, 42, 1098), fill=bcolor)
-    draw.line((36, 1099, 43, 1099), fill=bcolor)
-    draw.line((36, 1100, 43, 1100), fill=bcolor)
-    draw.line((36, 1101, 44, 1101), fill=bcolor)
-    draw.line((36, 1102, 45, 1102), fill=bcolor)
-    draw.line((36, 1103, 46, 1103), fill=bcolor)
-    draw.line((36, 1104, 47, 1104), fill=bcolor)
-    draw.line((36, 1105, 48, 1105), fill=bcolor)
-    draw.line((36, 1106, 49, 1106), fill=bcolor)
-    draw.line((36, 1107, 50, 1107), fill=bcolor)
-    draw.line((36, 1108, 52, 1108), fill=bcolor)
-    draw.line((36, 1109, 54, 1109), fill=bcolor)
-    draw.line((36, 1110, 56, 1110), fill=bcolor)
-    draw.line((36, 1111, 58, 1111), fill=bcolor)
-    draw.line((36, 1112, 60, 1112), fill=bcolor)
-    draw.line((36, 1113, 61, 1113), fill=bcolor)
-    draw.line((36, 1114, 69, 1114), fill=bcolor)
-    draw.line((36, 1115, 69, 1115), fill=bcolor)
-
-    draw.line((820, 1083, 821, 1083), fill=bcolor)
-    draw.line((820, 1084, 821, 1084), fill=bcolor)
-    draw.line((820, 1085, 821, 1085), fill=bcolor)
-    draw.line((820, 1086, 821, 1086), fill=bcolor)
-    draw.line((820, 1087, 821, 1087), fill=bcolor)
-    draw.line((820, 1088, 821, 1088), fill=bcolor)
-    draw.line((819, 1089, 821, 1089), fill=bcolor)
-    draw.line((819, 1090, 821, 1090), fill=bcolor)
-    draw.line((818, 1091, 821, 1091), fill=bcolor)
-    draw.line((818, 1092, 821, 1092), fill=bcolor)
-    draw.line((818, 1093, 821, 1093), fill=bcolor)
-    draw.line((817, 1094, 821, 1094), fill=bcolor)
-    draw.line((816, 1095, 821, 1095), fill=bcolor)
-    draw.line((816, 1096, 821, 1096), fill=bcolor)
-    draw.line((815, 1097, 821, 1097), fill=bcolor)
-    draw.line((815, 1098, 821, 1098), fill=bcolor)
-    draw.line((814, 1099, 821, 1099), fill=bcolor)
-    draw.line((813, 1100, 821, 1100), fill=bcolor)
-    draw.line((812, 1101, 821, 1101), fill=bcolor)
-    draw.line((811, 1102, 821, 1102), fill=bcolor)
-    draw.line((811, 1103, 821, 1103), fill=bcolor)
-    draw.line((810, 1104, 821, 1104), fill=bcolor)
-    draw.line((809, 1105, 821, 1105), fill=bcolor)
-    draw.line((808, 1106, 821, 1106), fill=bcolor)
-    draw.line((807, 1107, 821, 1107), fill=bcolor)
-    draw.line((805, 1108, 821, 1108), fill=bcolor)
-    draw.line((803, 1109, 821, 1109), fill=bcolor)
-    draw.line((801, 1110, 821, 1110), fill=bcolor)
-    draw.line((799, 1111, 821, 1111), fill=bcolor)
-    draw.line((797, 1112, 821, 1112), fill=bcolor)
-    draw.line((796, 1113, 821, 1113), fill=bcolor)
-    draw.line((788, 1114, 821, 1114), fill=bcolor)
-    draw.line((788, 1115, 821, 1115), fill=bcolor)
 
     return image
 
 def img2mpcFFTCG(image, output, dir, bcolor):
-
     # Resize
     image = image.resize((747,1044), Image.ANTIALIAS)
 
@@ -251,13 +107,16 @@ def img2mpcFFTCG(image, output, dir, bcolor):
 
     return image
 
-def img2mpcRage(image, output, dir, bcolor):
-
+def img2mpcRage(image, output, dir):
     # Resize
-    image = image.resize((747,1044), Image.ANTIALIAS)
+    image = image.resize((1535,2098), Image.ANTIALIAS)
 
-    # Add bleed area
-    image = ImageOps.expand(image,border=36,fill=bcolor)
+    # Blur the copyright info
+    mask = Image.new('L', image.size, 0)
+    draw = ImageDraw.Draw(mask)
+    draw.rectangle([(257,37),(0,2000)], fill=255)
+    blurred = image.filter(ImageFilter.BoxBlur(3))
+    image.paste(blurred, mask=mask)
 
     return image
 
@@ -265,11 +124,11 @@ def img2mpc(input, output, dir, game, frame, type, bcolor):
     image = Image.open(input)
 
     if 'digimon' in game:
-        image = img2mpcDigimon(image, output, dir, bcolor)
-    elif 'fftcg' in game or 'rage' in game:
+        image = img2mpcDigimon(image, output, dir)
+    elif 'fftcg' in game:
         image = img2mpcFFTCG(image, output, dir, bcolor)
     elif 'rage' in game:
-        image = img2mpcRage(image, output, dir, bcolor)
+        image = img2mpcRage(image, output, dir)
     else:
         # Adjust brightness
         image = ImageEnhance.Brightness(image).enhance(1.07)

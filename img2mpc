@@ -114,8 +114,11 @@ def img2mpcRage(image, output, dir):
     # Blur the copyright info
     mask = Image.new('L', image.size, 0)
     draw = ImageDraw.Draw(mask)
-    draw.rectangle([(257,37),(0,2000)], fill=255)
-    blurred = image.filter(ImageFilter.BoxBlur(3))
+    if type == 'fan':
+        draw.rectangle([(405,2027),(1138,2098)], fill=255)
+    else:
+        draw.rectangle([(134,1956),(1300,2006)], fill=255)
+    blurred = image.filter(ImageFilter.BoxBlur(7))
     image.paste(blurred, mask=mask)
 
     return image

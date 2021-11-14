@@ -107,7 +107,7 @@ def img2mpcFFTCG(image, output, dir, bcolor):
 
     return image
 
-def img2mpcRage(image, output, dir):
+def img2mpcRage(image, output, dir, type):
     # Resize
     image = image.resize((1535,2098), Image.ANTIALIAS)
 
@@ -116,9 +116,10 @@ def img2mpcRage(image, output, dir):
     draw = ImageDraw.Draw(mask)
     if type == 'fan':
         draw.rectangle([(405,2027),(1138,2098)], fill=255)
+        blurred = image.filter(ImageFilter.BoxBlur(9))
     else:
         draw.rectangle([(134,1956),(1300,2006)], fill=255)
-    blurred = image.filter(ImageFilter.BoxBlur(7))
+        blurred = image.filter(ImageFilter.BoxBlur(7))
     image.paste(blurred, mask=mask)
 
     return image
@@ -131,7 +132,7 @@ def img2mpc(input, output, dir, game, frame, type, bcolor):
     elif 'fftcg' in game:
         image = img2mpcFFTCG(image, output, dir, bcolor)
     elif 'rage' in game:
-        image = img2mpcRage(image, output, dir)
+        image = img2mpcRage(image, output, dir, type)
     else:
         # Adjust brightness
         image = ImageEnhance.Brightness(image).enhance(1.07)

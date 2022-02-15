@@ -107,6 +107,8 @@ def img2mpcFFTCG(image, output, dir, bcolor):
 
     return image
 
+# Rage cards are slightly bigger than Magic cards, this is the closest I could find:
+# https://www.makeplayingcards.com/design/custom-blank-card-traditional-size.html
 def img2mpcRage(image, output, dir, type):
     # Resize
     image = image.resize((1535,2098), Image.ANTIALIAS)

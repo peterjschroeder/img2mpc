@@ -111,18 +111,21 @@ def img2mpcFFTCG(image, output, dir, bcolor):
 # https://www.makeplayingcards.com/design/custom-blank-card-traditional-size.html
 def img2mpcRage(image, output, dir, type):
     # Resize
-    image = image.resize((1535,2098), Image.ANTIALIAS)
+    image = image.resize((750,1050), Image.ANTIALIAS)
 
     # Blur the copyright info
     mask = Image.new('L', image.size, 0)
     draw = ImageDraw.Draw(mask)
     if type == 'fan':
-        draw.rectangle([(405,2027),(1138,2098)], fill=255)
+        draw.rectangle([(224,1016),(530,1046)], fill=255)
         blurred = image.filter(ImageFilter.BoxBlur(9))
     else:
-        draw.rectangle([(134,1956),(1300,2006)], fill=255)
+        draw.rectangle([(40,988),(702,1015)], fill=255)
         blurred = image.filter(ImageFilter.BoxBlur(7))
     image.paste(blurred, mask=mask)
+
+    # Add a bleed area
+    image = ImageOps.expand(image,border=72,fill='black')
 
     return image
 
